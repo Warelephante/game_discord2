@@ -64,7 +64,7 @@ app.post("/exchange", async (req, res) => {
 });
 
 //const app = express();
-const server = http.createServer(app);
+
 
 const io = new Server(server, {
   path: "/socket.io",
