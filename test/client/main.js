@@ -5,8 +5,14 @@ import { io } from "socket.io-client";
 
 const socket = io(window.location.origin, {
   path: "/socket.io",
-  transports: ["websocket"]
+  transports: ["websocket"],
+  reconnection: true,
+  reconnectionAttempts: Infinity,
+  reconnectionDelay: 1000,
+  reconnectionDelayMax: 5000
 });
+
+
 
 //const socket = io(window.location.origin, {
  // path: '/server/socket.io',
