@@ -2,6 +2,25 @@ import Phaser from "phaser";
 
 import { io } from "socket.io-client";
 
+async function waitForServer() {
+  while (true) {
+    try {
+      const res = await fetch("/health");
+
+      if (res.ok) {
+        console.log("Server awake");
+        return;
+      }
+    } catch (err) {
+      console.log("Waiting for server wake...");
+    }
+
+    await new Promise(r => setTimeout(r, 2000));
+  }
+}
+
+await waitForServer();
+
 
 const socket = io(window.location.origin, {
   path: "/socket.io",
