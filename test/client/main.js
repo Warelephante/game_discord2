@@ -53,10 +53,14 @@ import { DiscordSDK } from "@discord/embedded-app-sdk";
 import { authenticateDiscord } from "./auth";
 
 if (isDiscordActivity) {
-    
-    const user = await authenticateDiscord();
-    console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-    console.log(user.username);
+    try {
+      const user = await authenticateDiscord();
+      console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+      console.log(user.username);
+    }
+    catch {
+      console.log("Guest");
+    }
 }
     
     /*
