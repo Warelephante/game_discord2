@@ -2,11 +2,14 @@ import Phaser from "phaser";
 
 import { io } from "socket.io-client";
 
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 async function waitForServer() {
   while (true) {
+    console.log("Attempted connection")
     try {
       const res = await fetch("/health");
-
+      console.log("health fetched")
       if (res.ok) {
         console.log("Server awake");
         return;
@@ -15,7 +18,9 @@ async function waitForServer() {
       console.log("Waiting for server wake...");
       
     }
-    await new Promise(r => setTimeout(r, 2000));
+    console.log("Connection attempt likely failed");
+    //await new Promise(r => setTimeout(r, 2000));
+    await sleep(5000);
 
     
   }
