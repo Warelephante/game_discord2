@@ -82,6 +82,10 @@ if (isDiscordActivity) {
       console.log("Guest");
     }
 }
+else {
+  console.log("Is not discord activity");
+}
+console.log("passed");
     
     /*
     const discordSdk = new DiscordSDK("1435704621229146184");
@@ -389,5 +393,7 @@ const config = {
         //update: update
     
 };
+
+console.log("made it to end");
 
 const game = new Phaser.Game(config);
