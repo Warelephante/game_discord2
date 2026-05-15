@@ -71,7 +71,7 @@ console.log("flag worked");
 
 import { DiscordSDK } from "@discord/embedded-app-sdk";
 import { authenticateDiscord } from "./auth";
-console.log("imports worked")
+console.log("imports worked YAYYYYYYYYYYYYYYYYY");
 if (isDiscordActivity) {
     try {
       const user = await authenticateDiscord();
