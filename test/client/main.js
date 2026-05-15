@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-await sleep(1000);
+await sleep(5000);
 
 
 async function waitForServer() {
@@ -80,7 +80,7 @@ console.log("flag worked");
 import { DiscordSDK } from "@discord/embedded-app-sdk";
 import { authenticateDiscord } from "./auth";
 console.log("imports worked YAYYYYYYYYYYYYYYYYY");
-await sleep(2000);
+await sleep(5000);
 if (isDiscordActivity) {
     while (true) {
       console.log("trying");
