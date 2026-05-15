@@ -33,5 +33,6 @@ export async function authenticateDiscord() {
   }
   catch {
     console.log("Failure");
+    return null;
   }
 }
