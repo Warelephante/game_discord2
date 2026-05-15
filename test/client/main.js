@@ -66,46 +66,51 @@ const socket = io(window.location.origin, {
 //});
 console.log("server worked");
 
-socket.on("connect", () => {
-  socket.emit("test", "hello from client");
-});
-
-console.log("connect func worked");
+import { DiscordSDK } from "@discord/embedded-app-sdk";
+import { authenticateDiscord } from "./auth";
 
 const isDiscordActivity =
   window.location.hostname.includes("discordsays.com");
 console.log("flag worked");
 
+socket.on("connect", () => {
+  socket.emit("test", "hello from client");
+  await sleep(5000);
+  if (isDiscordActivity) {
+      while (true) {
+        console.log("trying");
+        try {
+          const user = await authenticateWithTimeout();
+          if (user == null) {
+            console.log("null");
+          }
+          else {
+            //console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+           // console.log(user.username);
+            console.log(user);
+          }
+          break;
+        }
+        catch {
+          console.log("Guest");
+        }
+      await sleep(2000);
+      }
+      
+  }
+  else {
+    console.log("Is not discord activity");
+  }
+});
 
-import { DiscordSDK } from "@discord/embedded-app-sdk";
-import { authenticateDiscord } from "./auth";
+console.log("connect func worked");
+
+
+
+
+
 console.log("imports worked YAYYYYYYYYYYYYYYYYY");
-await sleep(5000);
-if (isDiscordActivity) {
-    while (true) {
-      console.log("trying");
-      try {
-        const user = await authenticateWithTimeout();
-        if (user == null) {
-          console.log("null");
-        }
-        else {
-          //console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-         // console.log(user.username);
-          console.log(user);
-        }
-        break;
-      }
-      catch {
-        console.log("Guest");
-      }
-    await sleep(2000);
-    }
-    
-}
-else {
-  console.log("Is not discord activity");
-}
+
 console.log("passed");
     
     /*
