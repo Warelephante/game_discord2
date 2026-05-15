@@ -80,23 +80,28 @@ console.log("flag worked");
 import { DiscordSDK } from "@discord/embedded-app-sdk";
 import { authenticateDiscord } from "./auth";
 console.log("imports worked YAYYYYYYYYYYYYYYYYY");
-await sleep(5000);
+await sleep(2000);
 if (isDiscordActivity) {
-    console.log("trying");
-    try {
-      const user = await authenticateWithTimeout();
-      if (user == null) {
-        console.log("null");
+    while (true) {
+      console.log("trying");
+      try {
+        const user = await authenticateWithTimeout();
+        if (user == null) {
+          console.log("null");
+        }
+        else {
+          //console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+         // console.log(user.username);
+          console.log(user);
+        }
+        break;
       }
-      else {
-        //console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-       // console.log(user.username);
-        console.log(user);
+      catch {
+        console.log("Guest");
       }
+    await sleep(2000);
     }
-    catch {
-      console.log("Guest");
-    }
+    
 }
 else {
   console.log("Is not discord activity");
