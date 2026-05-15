@@ -29,6 +29,19 @@ async function waitForServer() {
   }
 }
 
+async function authenticateWithTimeout(timeout = 5000) {
+
+  return Promise.race([
+
+    authenticateDiscord(),
+
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Auth timeout")), timeout)
+    )
+
+  ]);
+}
+
 
 
 
@@ -71,13 +84,14 @@ await sleep(5000);
 if (isDiscordActivity) {
     console.log("trying");
     try {
-      const user = await authenticateDiscord();
+      const user = await authenticateWithTimeout();
       if (user == null) {
         console.log("null");
       }
       else {
-        console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        console.log(user.username);
+        //console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+       // console.log(user.username);
+        console.log(user);
       }
     }
     catch {
