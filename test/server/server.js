@@ -212,7 +212,6 @@ let gameState = {
 
 io.on("connection", (socket) => {
   socket.roomid = null;
-  socket.emit("connect");
 
   socket.on("getrooms", () => {
     console.log("working");
