@@ -72,8 +72,13 @@ if (isDiscordActivity) {
     console.log("trying");
     try {
       const user = await authenticateDiscord();
-      console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-      console.log(user.username);
+      if (user == null) {
+        console.log("null");
+      }
+      else {
+        console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        console.log(user.username);
+      }
     }
     catch {
       console.log("Guest");
