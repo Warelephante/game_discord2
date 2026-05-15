@@ -13,14 +13,21 @@ async function waitForServer() {
       }
     } catch (err) {
       console.log("Waiting for server wake...");
-      await new Promise(r => setTimeout(r, 2000));
+      
     }
+    await new Promise(r => setTimeout(r, 2000));
 
     
   }
 }
 
-await waitForServer();
+try {
+  await waitForServer();
+}
+catch {
+  console.log("error");
+}
+
 
 
 const socket = io(window.location.origin, {
