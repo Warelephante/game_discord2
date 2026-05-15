@@ -29,12 +29,7 @@ async function waitForServer() {
   }
 }
 
-try {
-  await waitForServer();
-}
-catch {
-  console.log("error");
-}
+
 
 
 const socket = io(window.location.origin, {
