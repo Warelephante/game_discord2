@@ -4,6 +4,9 @@ import { io } from "socket.io-client";
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+await sleep(5000);
+
+
 async function waitForServer() {
   while (true) {
     console.log("Attempted connection")
