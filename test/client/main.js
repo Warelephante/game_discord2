@@ -36,26 +36,7 @@ catch {
   console.log("error");
 }
 
-let socket = null;
 
-while(true) {
-  try {
-    socket = io(window.location.origin, {
-      path: "/socket.io",
-      transports: ["websocket"],
-      reconnection: true,
-      reconnectionAttempts: Infinity,
-      reconnectionDelay: 1000,
-      reconnectionDelayMax: 5000
-    });
-    break;
-  }
-  catch {
-    console.log("waiting");
-    await sleep(2000);
-  }
-}
-/*
 const socket = io(window.location.origin, {
   path: "/socket.io",
   transports: ["websocket"],
@@ -64,7 +45,7 @@ const socket = io(window.location.origin, {
   reconnectionDelay: 1000,
   reconnectionDelayMax: 5000
 });
-*/
+
 
 
 
@@ -75,18 +56,22 @@ const socket = io(window.location.origin, {
 //const socket = io("https://bite-wallpaper-diabetes-cas.trycloudflare.com", {
   //transports: ["websocket"]
 //});
-
+console.log("server worked");
 
 socket.on("connect", () => {
   socket.emit("test", "hello from client");
 });
 
+console.log("connect func worked");
+
 const isDiscordActivity =
   window.location.hostname.includes("discordsays.com");
+console.log("flag worked");
+
 
 import { DiscordSDK } from "@discord/embedded-app-sdk";
 import { authenticateDiscord } from "./auth";
-
+console.log("imports worked")
 if (isDiscordActivity) {
     try {
       const user = await authenticateDiscord();
