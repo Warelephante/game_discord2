@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-await sleep(5000);
+await sleep(1000);
 
 
 async function waitForServer() {
@@ -36,8 +36,26 @@ catch {
   console.log("error");
 }
 
+let socket = null;
 
-
+while(true) {
+  try {
+    socket = io(window.location.origin, {
+      path: "/socket.io",
+      transports: ["websocket"],
+      reconnection: true,
+      reconnectionAttempts: Infinity,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000
+    });
+    break;
+  }
+  catch {
+    console.log("waiting");
+    await sleep(2000);
+  }
+}
+/*
 const socket = io(window.location.origin, {
   path: "/socket.io",
   transports: ["websocket"],
@@ -46,6 +64,7 @@ const socket = io(window.location.origin, {
   reconnectionDelay: 1000,
   reconnectionDelayMax: 5000
 });
+*/
 
 
 
