@@ -73,7 +73,7 @@ const isDiscordActivity =
   window.location.hostname.includes("discordsays.com");
 console.log("flag worked");
 await sleep(5000);
-socket.on("connect", () => {
+socket.on("connect", async () => {
   socket.emit("test", "hello from client");
  
   if (isDiscordActivity) {
