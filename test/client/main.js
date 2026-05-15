@@ -72,10 +72,10 @@ import { authenticateDiscord } from "./auth";
 const isDiscordActivity =
   window.location.hostname.includes("discordsays.com");
 console.log("flag worked");
-await sleep(5000);
+
 socket.on("connect", async () => {
   socket.emit("test", "hello from client");
- 
+  await sleep(5000);
   if (isDiscordActivity) {
       while (true) {
         console.log("trying");
@@ -94,7 +94,7 @@ socket.on("connect", async () => {
         catch {
           console.log("Guest");
         }
-      //await sleep(2000);
+      await sleep(2000);
       }
       
   }
