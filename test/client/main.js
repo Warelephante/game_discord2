@@ -86,7 +86,6 @@ if (isDiscordActivity) {
        // console.log(user.username);
         console.log(user);
       }
-      break;
     }
     catch {
       console.log("Guest");
