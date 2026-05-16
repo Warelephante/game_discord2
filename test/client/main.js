@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-await sleep(5000);
+await sleep(2000);
 
 
 async function waitForServer() {
@@ -73,8 +73,34 @@ const isDiscordActivity =
   window.location.hostname.includes("discordsays.com");
 console.log("flag worked");
 
+await sleep(2000);
+if (isDiscordActivity) {
+    console.log("trying");
+    try {
+      const user = await authenticateWithTimeout();
+      if (user == null) {
+        console.log("null");
+      }
+      else {
+        //console.log("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+       // console.log(user.username);
+        console.log(user);
+      }
+      break;
+    }
+    catch {
+      console.log("Guest");
+    }
+  await sleep(2000);
+    
+}
+else {
+  console.log("Is not discord activity");
+}
+
 socket.on("connect", async () => {
   socket.emit("test", "hello from client");
+  /*
   await sleep(5000);
   if (isDiscordActivity) {
       while (true) {
@@ -101,6 +127,7 @@ socket.on("connect", async () => {
   else {
     console.log("Is not discord activity");
   }
+  */
 });
 
 console.log("connect func worked");
